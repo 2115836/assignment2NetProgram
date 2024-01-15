@@ -4,7 +4,7 @@ def get_weather(api_key, city):
     base_url = "http://api.weatherstack.com/current"
     params = {
         "access_key": api_key,
-        "query": city
+        "query": city   # define parameters early
     }
 
     try:
@@ -16,15 +16,16 @@ def get_weather(api_key, city):
             print(f"Temperature: {data['current']['temperature']}°C")
             print(f"Description: {data['current']['weather_descriptions'][0]}")
             print(f"Humidity: {data['current']['humidity']}%")
-            print(f"Wind Speed: {data['current']['wind_speed']}
+            print(f"Wind Speed: {data['current']['wind_speed']}km/h")
 
         else:
             print(f"Error: {data['error']['info']}")
+    
+    finally: 
+        requests.RequestException as e:
+    print(f"Error making the request: {e}")
 
-    except requests.RequestException as e:
-        print(f"Error making the request: {e}")
-
-if __name__ == "__main__":
+if __name__ == "__main__": # 
     api_key = '89319aa1d74d99208c59efb20c39e5e1'
     city = input('Please enter the city name:')
 
