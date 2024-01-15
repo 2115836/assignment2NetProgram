@@ -14,8 +14,15 @@ def get_weather(api_key, city):
         if response.status_code == 200:
             print(f"Weather in {city}:")
             print(f"Temperature: {data['current']['temperature']}°C")
-            
+
         else:
             print(f"Error: {data['error']['info']}")
 
-    
+    except requests.RequestException as e:
+        print(f"Error making the request: {e}")
+
+if __name__ == "__main__":
+    api_key = '89319aa1d74d99208c59efb20c39e5e1'
+    city = input('Please enter the city name:')
+
+    get_weather(api_key, city)
