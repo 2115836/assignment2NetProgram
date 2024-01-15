@@ -14,6 +14,9 @@ def get_weather(api_key, city):
         if response.status_code == 200:
             print(f"Weather in {city}:")
             print(f"Temperature: {data['current']['temperature']}°C")
+            print(f"Description: {data['current']['weather_descriptions'][0]}")
+            print(f"Humidity: {data['current']['humidity']}%")
+            print(f"Wind Speed: {data['current']['wind_speed']}
 
         else:
             print(f"Error: {data['error']['info']}")
